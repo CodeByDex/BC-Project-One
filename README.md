@@ -32,7 +32,18 @@ https://openlibrary.org/developers/api
 
 https://mui.com/material-ui/
 
-### Ryan's Test
-I cloned the repo and made some changes
-### Chris Test
-i am here!!
+## Interapp Functions & Objects
+
+Result {
+  Type: {Movie|Book},
+  Title: text
+}
+
+Result FindMovieByTitle(titleText)
+Result FindBookByTitle(titleText)
+[Result] GetMovieWatchListFromLocalStorage()
+[Result] GetBookReadListFRomLocalStorage()
+[Result] AddMovieToWatchList(Result)
+[Result] AddBookToReadList(Result)
+[Result] RemoveMoveFromWatchList(Result)
+[Result] RemoveBookFromReadList(Result)
