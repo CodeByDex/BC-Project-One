@@ -33,7 +33,7 @@ https://openlibrary.org/developers/api
 https://mui.com/material-ui/
 
 ## Interapp Functions & Objects
-
+```
 Result {
   Type: {Movie|Book},
   Title: text
@@ -47,3 +47,4 @@ Result FindBookByTitle(titleText)
 [Result] AddBookToReadList(Result)
 [Result] RemoveMoveFromWatchList(Result)
 [Result] RemoveBookFromReadList(Result)
+```
