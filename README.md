@@ -1,7 +1,7 @@
 # BC-Project-One
 Group Project One for Boot Camp
 
-##User Story
+## User Story
 Movie and Book Search Site
 
 Allows you to search for movies or books and then shows you related books or movies depending on what you've searched for.
