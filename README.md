@@ -10,11 +10,11 @@ When I search for a movie then I am given a list of movies matching my search
 When I select a movie from the search results then I am given a list of books that match that movie if they exist.
 
 Result Enhancements:
-        - Given an Info Card with info about the Book/Movie
-          - Author/Director
-          - Genre
-        - Given an image of the Movie/Book
-        - Given Reviews/Ratings
+  - Given an Info Card with info about the Book/Movie
+    - Author/Director
+    - Genre
+  - Given an image of the Movie/Book
+  - Given Reviews/Ratings
 
 
 When I see a movie or book I am able to add it to my watch or read list
