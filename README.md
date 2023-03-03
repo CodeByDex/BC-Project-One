@@ -16,7 +16,6 @@ Result Enhancements:
   - Given an image of the Movie/Book
   - Given Reviews/Ratings
 
-
 When I see a movie or book I am able to add it to my watch or read list
 
 When I leave and come back to the site my read/watch list is still there
@@ -25,3 +24,8 @@ When I leave and come back to the site my read/watch list is still there
 When I select a genre I am given results of movies and books for that genre
 
 When I search for an author/director I am given results 
+
+## APIs
+https://imdb-api.com/
+
+https://openlibrary.org/developers/api
