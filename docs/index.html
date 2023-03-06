@@ -18,6 +18,39 @@
         <meta name="viewport" content="width=device-width,initial-scale=1.0">
     </head>
     <body>
+        <header>
+            <h1>Movie and Book Search</h1>
+            <nav>
+                <a href="mylist.html">my list</a>
+            </nav>
+        </header>
+        <main>
+            <section id="search">
+                <h2>Search</h2>
+                <input type="radio" id="Books">
+                <label for="Books">Books</label><br>
+                <input type="radio" id="Movies">
+                <label for="Movies">Movies</label><br>
+                <input id="search-input">
+                <button id="search-button">
+                    search
+                </button>
+
+            </section>
+            <section id="results">
+                <div>
+                    <img src="placeholder">
+                    <h3>Title</h3>
+                    <h4>Author/Director</h4>
+                    <button class="add-favorite">add to my list</button>
+    
+                </div>
+            </section>
+
+        </main>
+        <footer>
+
+        </footer>
 
         <script src="./assets/scripts/BookAPI.js"></script>
         <script src="./assets/scripts/script.js"></script>
