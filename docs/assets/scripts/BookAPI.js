@@ -66,7 +66,7 @@ function findMovieByTitle(titleText, callback){
         if(response.ok){
             return response.json()
         } else {
-            console.log(response.status);
+            return response.status;
         }
     })
     .then(data => {
@@ -76,4 +76,22 @@ function findMovieByTitle(titleText, callback){
             callback(data.Error);
         }
     })   
+}
+
+function findMoviesByTitle(titleText, callback){
+    fetch(movieAPILink + movieAPIKey + "&s=" + titleText)
+    .then(response => {
+        if(response.ok){
+            return response.json();
+        } else {
+            return response.status;
+        }
+    })
+    .then(data => {
+        if(!data.Error){
+            callback(data.Search);
+        } else {
+            callback(data.Error);
+        }
+    })
 }
