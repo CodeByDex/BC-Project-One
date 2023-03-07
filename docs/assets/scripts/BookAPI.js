@@ -9,9 +9,19 @@ function RemoveBookFromReadList(Result){};
 
 function findMovieByTitle(titleText, callback){
     fetch(movieAPILink + movieAPIKey + "&t=" + titleText)
-    .then(response => response.json())
+    .then(response => {
+        if(response.ok){
+            return response.json()
+        } else {
+            console.log(response.status);
+        }
+    })
     .then(data => {
-        callback(data);
+        if(!data.Error){
+            callback(data);
+        } else {
+            callback(data.Error);
+        }
     })   
 }
 
