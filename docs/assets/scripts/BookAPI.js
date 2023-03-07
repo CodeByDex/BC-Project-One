@@ -24,7 +24,3 @@ function findMovieByTitle(titleText, callback){
         }
     })   
 }
-
-findMovieByTitle("Inception", response => {
-    console.log(response);
-})
