@@ -79,6 +79,7 @@ function findMovieByTitle(titleText, callback){
 }
 
 function findMoviesByTitle(titleText, callback){
+    let foundMovies = [];
     fetch(movieAPILink + movieAPIKey + "&s=" + titleText)
     .then(response => {
         if(response.ok){
@@ -89,9 +90,20 @@ function findMoviesByTitle(titleText, callback){
     })
     .then(data => {
         if(!data.Error){
-            callback(data.Search);
+            data.Search.forEach(movie => {
+                foundMovies.push({
+                    Type: "Movie",
+                    Title: movie.Title,
+                    Year: movie.Year,
+                    Poster: movie.Poster
+                })
+            })
+            callback(foundMovies);
         } else {
             callback(data.Error);
         }
     })
 }
+
+// findMoviesByTitle("Lord of the Rings", results => console.log(results));
+// findMovieByTitle("Lord of the Rings", results => console.log(results));
