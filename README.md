@@ -39,8 +39,8 @@ Result {
   Title: text
 }
 
-Result FindMovieByTitle(titleText)
-Result FindBookByTitle(titleText)
+FindMovieByTitle(titleText, callbackFunction(Result))
+FindBookByTitle(titleText, callbackFunction(Result))
 [Result] GetMovieWatchListFromLocalStorage()
 [Result] GetBookReadListFRomLocalStorage()
 [Result] AddMovieToWatchList(Result)
