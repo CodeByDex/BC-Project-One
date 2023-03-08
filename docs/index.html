@@ -2,49 +2,85 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+        <link rel="stylesheet" href="./assets/css/style.css">
         <title>Movie and Book Search</title>
-
-        <link rel="icon" type="image/x-icon" href="">
     
-        <meta name="author" content="Chris Adams, James Martin, Jason Bernzweig, Ryan Spath, Xander Wyckoff">
-        <meta name="keywords"
-            content="">
-        <meta name="description"
-            content="">
-        <meta property="og:title" content="">
-        <meta property="og:type" content="website">
-        <meta property="og:image" content="">
-        <meta property="og:url" content="">
-        <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    </head>
+      </head>
     <body>
         <header>
-            <h1>Movie and Book Search</h1>
-            <nav>
-                <a href="mylist.html">my list</a>
+            <nav class="navbar">
+                <div class="navbar-menu"> 
+                    <div class="navbar-end">
+                        <a class="navbar-item" href="mylist.html">My List</a>
+                    </div>  
+                </div>
+                
             </nav>
         </header>
         <main>
-            <section id="search">
-                <h2>Search</h2>
-                <input type="radio" id="Books">
-                <label for="Books">Books</label><br>
-                <input type="radio" id="Movies">
-                <label for="Movies">Movies</label><br>
-                <input id="search-input">
-                <button id="search-button">
-                    search
-                </button>
+            <section id="search" class="section is-medium">
+                <div class="card has-text-centered">
+                    <div class="card-header">
+                        <h2 class="title is-2">Movie and Book Search</h2>
+                    </div>
+                    <div class="card-content">
+                        <div class="content">
+                            <input type="radio" id="Books" name="search-type">
+                            <label class="button" for="Books">Books</label>
+                            <input type="radio" id="Movies" name="search-type"> 
+                            <label class="button" for="Movies">Movies</label><br>
+                            <input class="input is-rounded m-3" id="search-input">
+                            <button class="button" id="search-button">
+                                Search
+                            </button>
+                        </div>
+                    </div>
+                </div>
 
             </section>
-            <section id="results">
-                <div>
-                    <img src="placeholder">
+            <section class="section tile is-ancestor" id="results">
+                <div class="tile is-3">
+                 <div class="card">
+                    <div class="card-image">
+                    <figure class="img is-4by3"
+                    <img src="placeholder" alt="book/movie-image">
+                </div>
                     <h3>Title</h3>
                     <h4>Author/Director</h4>
                     <button class="add-favorite">add to my list</button>
     
+                    </div>
                 </div>
+                <div class="tile is-3">
+                    <div class="card">
+                       <img src="placeholder" alt="book/movie-image"> 
+                       <h3>Title</h3>
+                       <h4>Author/Director</h4>
+                       <button class="add-favorite">add to my list</button>
+       
+                       </div>
+                   </div>
+                   <div class="tile is-3">
+                    <div class="card">
+                       <img src="placeholder" alt="book/movie-image"> 
+                       <h3>Title</h3>
+                       <h4>Author/Director</h4>
+                       <button class="add-favorite">add to my list</button>
+       
+                       </div>
+                   </div>
+                   <div class="tile is-3">
+                    <div class="card">
+                       <img src="placeholder" alt="book/movie-image"> 
+                       <h3>Title</h3>
+                       <h4>Author/Director</h4>
+                       <button class="add-favorite">add to my list</button>
+       
+                       </div>
+                   </div>
             </section>
 
         </main>

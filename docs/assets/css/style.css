@@ -1,1 +1,11 @@
-/* Jason Test Comment */
+h2 {
+    width: 100%;
+}
+
+#search input[type="radio"]{
+    display: none;
+}
+
+#search input[type="radio"]:checked + label {
+    background: lightblue;
+}
