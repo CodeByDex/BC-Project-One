@@ -1,3 +1,6 @@
+let movieAPILink = "http://www.omdbapi.com/?apikey=";
+let movieAPIKey = "ab6fe753";
+
 /*******************************************************
  * 
  * https://openlibrary.org/search.json?q=the+lord+of+the+rings
@@ -8,7 +11,11 @@
  * 
  *******************************************************/
 
-function FindBookByTitle(titleText, someFunction){};
+function FindBookByTitle(titleText, someFunction){
+    FindBooksByTitle(titleText, (results) => {
+        someFunction(results[0]);
+    })
+};
 function FindBooksByTitle(titleText, someFunction){
     let params = new URLSearchParams();
 
@@ -56,3 +63,51 @@ function FindBooksByTitle(titleText, someFunction){
 // FindBooksByTitle("The Hobbit", (results) => {
 //     console.log(results)
 // });
+
+function findMovieByTitle(titleText, callback){
+    fetch(movieAPILink + movieAPIKey + "&t=" + titleText)
+    .then(response => {
+        if(response.ok){
+            return response.json()
+        } else {
+            return response.status;
+        }
+    })
+    .then(data => {
+        if(!data.Error){
+            callback(data);
+        } else {
+            callback(data.Error);
+        }
+    })   
+}
+
+function findMoviesByTitle(titleText, callback){
+    let foundMovies = [];
+    fetch(movieAPILink + movieAPIKey + "&s=" + titleText)
+    .then(response => {
+        if(response.ok){
+            return response.json();
+        } else {
+            return response.status;
+        }
+    })
+    .then(data => {
+        if(!data.Error){
+            data.Search.forEach(movie => {
+                foundMovies.push({
+                    Type: "Movie",
+                    Title: movie.Title,
+                    Year: movie.Year,
+                    Poster: movie.Poster
+                })
+            })
+            callback(foundMovies);
+        } else {
+            callback(data.Error);
+        }
+    })
+}
+
+// findMoviesByTitle("Lord of the Rings", results => console.log(results));
+// findMovieByTitle("Lord of the Rings", results => console.log(results));
