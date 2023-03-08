@@ -21,6 +21,7 @@ function LoadCards(movieEL, movies) {
         let newButton = document.createElement("button");
 
         newImg.setAttribute("alt", "Movie Image");
+        newImg.setAttribute("src", "https://placekitten.com/200");
         newTitle.textContent = mov.Title;
         newAuthor.textContent = "Author Name";
         newButton.textContent = "Remove From List";
