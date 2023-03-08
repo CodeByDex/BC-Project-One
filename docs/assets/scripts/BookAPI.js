@@ -11,7 +11,11 @@ let movieAPIKey = "ab6fe753";
  * 
  *******************************************************/
 
-function FindBookByTitle(titleText, someFunction){};
+function FindBookByTitle(titleText, someFunction){
+    FindBooksByTitle(titleText, (results) => {
+        someFunction(results[0]);
+    })
+};
 function FindBooksByTitle(titleText, someFunction){
     let params = new URLSearchParams();
 
