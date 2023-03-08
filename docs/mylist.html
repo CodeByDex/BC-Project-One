@@ -16,30 +16,32 @@
         <meta property="og:image" content="">
         <meta property="og:url" content="">
         <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     </head>
     <body>
         <header>
-            <h1>Movie and Book Search</h1>
-            <nav>
-                <a href="index.html">Search</a>
+            <h1 class="title 1">Movie and Book Search</h1>
+            <nav class="navbar">
+                <a class="navbar-item" href="index.html">Search</a>
             </nav>
         </header>
-        <main>
-            <section id="My-Books">
-                <div>
-                    <img src="">
-                    <h3>Title</h3>
-                    <h4>Author/Director</h4>
-                    <button class="remove-favorite">Remove From List</button>
-                </div>
+        <main class="columns">
+            <section class="column">
+                <h2 class="title 2">Books</h2>
+                <section id="My-Books" class="column">
+                    <p>You've not added any books to your read list yet!</p>
+                </section>
             </section>
-            <section id="My-Movies">
-                <div>
-                    <img src="">
-                    <h3>Title</h3>
-                    <h4>Author/Director</h4>
-                    <button class="remove-favorite">Remove From List</button>
-                </div>
+            <section class="column">
+                <h2 class="title 2">Movies</h2>
+                <section id="My-Movies" class="column">
+                    <div>
+                        <img src="">
+                        <h3>Title</h3>
+                        <h4>Author/Director</h4>
+                        <button class="remove-favorite">Remove From List</button>
+                    </div>
+                </section>
             </section>
         </main>
 
