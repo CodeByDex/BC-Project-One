@@ -20,11 +20,23 @@ function LoadCards(movieEL, movies) {
         let newAuthor = document.createElement("h4");
         let newButton = document.createElement("button");
 
+        newDiv.classList.add("box");
+        newDiv.classList.add("container")
+
         newImg.setAttribute("alt", "Movie Image");
         newImg.setAttribute("src", "https://placekitten.com/200");
+        
         newTitle.textContent = mov.Title;
+        newTitle.classList.add("title");
+        newTitle.classList.add("3")
+
         newAuthor.textContent = "Author Name";
+        newAuthor.classList.add("subtitle");
+        newAuthor.classList.add("4")
+
         newButton.textContent = "Remove From List";
+        newButton.classList.add("button");
+        newButton.classList.add("is-dark");
         newButton.addEventListener("click", RemoveItem);
 
         movieEL.appendChild(newDiv);
