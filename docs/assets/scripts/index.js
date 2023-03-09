@@ -1,21 +1,25 @@
 const resultsEL = document.querySelector("#results");
 const booksCheck = document.querySelector("#Books");
 const moviesCheck = document.querySelector("#Movies");
+const searchInputEL = document.querySelector("#search-input");
+const searchButton = document.querySelector("#search-button");
 
 window.addEventListener("load", () => {
     resultsEL.innerHTML = "";
-    document.querySelector("#search-button").addEventListener("click", clickedSearch);
+    searchButton.addEventListener("click", clickedSearch);
 
     booksCheck.checked = true;
 });
 
 function clickedSearch(){
-    let searchValue = document.querySelector("#search-input").value;
+    let searchValue = searchInputEL.value;
     
     if (searchValue.length < 1)
     {
         return;
     }
+
+    searchButton.setAttribute("disabled", "");
 
     if(SearchType() === "Movie"){
         findMoviesByTitle(searchValue, DisplayResults);
@@ -73,6 +77,9 @@ function DisplayResults(results){
     } else {
         results.textContent = "No Results Found";
     }
+
+    searchInputEL.value = "";
+    searchButton.removeAttribute("disabled");
 
 };
 
