@@ -18,10 +18,9 @@ function clickedSearch(){
     }
 
     if(SearchType() === "Movie"){
-        DisplayResults(GetMovieWatchListFromLocalStorage());
+        findMoviesByTitle(searchValue, DisplayResults);
     } else if (SearchType() === "Book") {
         FindBooksByTitle(searchValue, DisplayResults);
-        // DisplayResults(GetBookReadListFRomLocalStorage());
     } else {
         
     }
@@ -80,13 +79,3 @@ function DisplayResults(results){
 function clickAddButton(event) {
     console.log(event.target.parentNode);
 };
-
-
-//Prototype Functions
-function GetMovieWatchListFromLocalStorage(){
-    return [{Title: "Movie 1"}, {Title: "Movie 2"}, {Title: "Movie 3"}];
-};
-
-function GetBookReadListFRomLocalStorage(){
-    return [{Title: "book 1"}, {Title: "book 2"}, {Title: "book 3"}];
-}
