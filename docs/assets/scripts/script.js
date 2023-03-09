@@ -4,7 +4,14 @@ function addMoviesToLocalStorage(listMovies) {
 }    
 
 function getMoviesFromLocalStorage() {
-    return JSON.parse(localStorage.getItem('listMovies'));
+    let movies = JSON.parse(localStorage.getItem('listMovies'));
+    
+    if (movies === null)
+    {
+        movies = [];
+    }
+
+    return movies;
 }    
 
 function addMovie (movie) {
@@ -17,7 +24,7 @@ function addMovie (movie) {
 function removeFromMovieFavorites(title) {
     let currentList = getMoviesFromLocalStorage();
     let index = currentList.findIndex(element => element.Title === title);
-    console.log(index)
+
     if (index != -1 ) {
         currentList.splice(index, 1)
     }
@@ -30,7 +37,13 @@ function addBooksToLocalStorage(listBooks) {
 }    
 
 function getBooksFromLocalStorage() {
-    return JSON.parse(localStorage.getItem('listBooks'));
+    let books = JSON.parse(localStorage.getItem('listBooks'));
+
+    if (books === null){
+        books = [];
+    };
+
+    return books;
 }    
 
 function addBook (book) {
@@ -41,9 +54,9 @@ function addBook (book) {
 }
 
 function removeFromBookFavorites(title) {
-    let currentList = getBookFromLocalStorage();
+    let currentList = getBooksFromLocalStorage();
     let index = currentList.findIndex(element => element.Title === title);
-    console.log(index)
+
     if (index != -1 ) {
         currentList.splice(index, 1)
     }

@@ -4,13 +4,19 @@ window.addEventListener("load", () => {
 });
 
 async function LoadMovies(){
-    const movies = GetMovieWatchListFromLocalStorage();
+    const movies = getMoviesFromLocalStorage();
     const movieEL = document.querySelector("#My-Movies");
 
-    LoadCards(movieEL, movies);
+    LoadCards(movieEL, movies, "Movie");
 };
 
-function LoadCards(movieEL, movies) {
+function LoadCards(movieEL, movies, type) {
+
+    if(movies.length === 0)
+    {
+        return;
+    }
+
     movieEL.innerHTML = "";
 
     movies.forEach(mov => {
@@ -37,6 +43,7 @@ function LoadCards(movieEL, movies) {
         newButton.textContent = "Remove From List";
         newButton.classList.add("button");
         newButton.classList.add("is-dark");
+        newButton.dataset.Type = type;
         newButton.addEventListener("click", RemoveItem);
 
         movieEL.appendChild(newDiv);
@@ -48,23 +55,21 @@ function LoadCards(movieEL, movies) {
 }
 
 async function LoadBooks(){
-    const books = GetBookReadListFRomLocalStorage();
+    const books = getBooksFromLocalStorage();
     const booksEL = document.querySelector("#My-Books");
 
-    LoadCards(booksEL, books);
+    LoadCards(booksEL, books, "Book");
 };
 
 function RemoveItem(event){
     const cardDiv = event.target.parentNode;
+    const title = cardDiv.querySelector("h3").textContent;
+
+    if (event.target.dataset.Type === "Book"){
+        removeFromBookFavorites(title);
+    } else {
+        removeFromMovieFavorites(title);
+    }
 
     cardDiv.parentNode.removeChild(cardDiv);
-}
-
-//Prototype Functions
-function GetMovieWatchListFromLocalStorage(){
-    return [{Title: "Movie 1"}, {Title: "Movie 2"}, {Title: "Movie 3"}];
-};
-
-function GetBookReadListFRomLocalStorage(){
-    return [{Title: "book 1"}, {Title: "book 2"}, {Title: "book 3"}];
 }
