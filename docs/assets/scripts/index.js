@@ -56,7 +56,15 @@ function DisplayResults(results){
             if (result.Type != "Error")
             {
                 let newTile = document.createElement("div");
+                let newAddButton = document.createElement("button");
+
                 newTile.textContent = result.Title;
+
+                newAddButton.textContent = "Add to Favorites";
+                newAddButton.classList.add("button");
+                newAddButton.addEventListener("click", clickAddButton);
+
+                newTile.appendChild(newAddButton);
         
                 resultsEL.appendChild(newTile);
             } else {
@@ -69,7 +77,9 @@ function DisplayResults(results){
 
 };
 
-
+function clickAddButton(event) {
+    console.log(event.target.parentNode);
+};
 
 
 //Prototype Functions
