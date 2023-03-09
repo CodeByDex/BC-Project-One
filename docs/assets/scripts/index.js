@@ -1,10 +1,12 @@
 const resultsEL = document.querySelector("#results");
+const booksCheck = document.querySelector("#Books");
+const moviesCheck = document.querySelector("#Movies");
 
 window.addEventListener("load", () => {
     resultsEL.innerHTML = "";
     document.querySelector("#search-button").addEventListener("click", clickedSearch);
 
-    //check radio button
+    booksCheck.checked = true;
 });
 
 function clickedSearch(){
@@ -18,14 +20,20 @@ function clickedSearch(){
     if(SearchType() === "Movie"){
         DisplayResults(GetMovieWatchListFromLocalStorage());
     } else if (SearchType() === "Book") {
-
+        FindBooksByTitle(searchValue, DisplayResults);
+        // DisplayResults(GetBookReadListFRomLocalStorage());
     } else {
         
     }
 };
 
 function SearchType(){
-    return "Movie"
+    if(booksCheck.checked) {
+        return "Book";
+    } else
+    {
+        return "Movie";
+    }
 };
 
 /*
@@ -39,9 +47,26 @@ function SearchType(){
     </div>
 */
 function DisplayResults(results){
-    results.forEach(result => {
-        let newTile = document.createElement("div");
-    });
+
+    if (results.length != 0)
+    {
+        resultsEL.innerHTML = "";
+
+        results.forEach(result => {
+            if (result.Type != "Error")
+            {
+                let newTile = document.createElement("div");
+                newTile.textContent = result.Title;
+        
+                resultsEL.appendChild(newTile);
+            } else {
+                resultsEL.textContent = result.ErrorMessage;
+            }
+        });
+    } else {
+        results.textContent = "No Results Found";
+    }
+
 };
 
 
