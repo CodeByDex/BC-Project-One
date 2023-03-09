@@ -14,30 +14,6 @@ function addMovie (movie) {
     addMoviesToLocalStorage(currentList);
 }
 
-const storageInput = document.querySelector('.storage');
-const text = document.querySelector('.search-input'); 
-const button = document.querySelector('.add-favorite');
-
-if(storageInput) {
-    text.textContent = storedFavorites;
-}
-
-const myFavoriteMovies = [{Title: "Lord of the Rings", Director: "Director X"}, {Title: "Titanic", Director: "Director Y"}];
-  addMoviesToLocalStorage(myFavoriteMovies);
-  addMovie({Title: "Next Movie", Director: "Director H"}); 
-
-button.addEventListener('click', movieAddClick)
-
-function movieAddClick(event) {
-    let title = event.target.parentNode.querySelector('h3').textContent;
-    let author = event.target.parentNode.querySelector('h4').textContent;
-    let newEntry = {
-        Title: title,
-        Director: director
-    }
-    addMovie(JSON.stringify(newEntry));
-}
-
 function removeFromMovieFavorites(title) {
     let currentList = getMoviesFromLocalStorage();
     let index = currentList.findIndex(element => element.Title === title);
@@ -47,8 +23,6 @@ function removeFromMovieFavorites(title) {
     }
     addMoviesToLocalStorage(currentList);
 }
-
-removeFromMovieFavorites("Lord of the Rings")
 
 // Begin Books Local Storage
 function addBooksToLocalStorage(listBooks) {
@@ -66,26 +40,6 @@ function addBook (book) {
     addBooksToLocalStorage(currentBookList);
 }
 
-if(storageInput) {
-    text.textContent = storedFavorites;
-}
-
-const myFavoriteBooks = [{Title: "Lord of the Rings", Author: "Author X"}, {Title: "Titanic", Author: "Director Y"}];
-  addBooksToLocalStorage(myFavoriteBooks);
-  addBook({Title: "Next Book", Author: "Author H"}); 
-
-button.addEventListener('click', bookAddClick)
-
-function bookAddClick(event) {
-    let title = event.target.parentNode.querySelector('h3').textContent;
-    let author = event.target.parentNode.querySelector('h4').textContent;
-    let newEntry = {
-        Title: title,
-        author: author
-    }
-    addBook(JSON.stringify(newEntry));
-}
-
 function removeFromBookFavorites(title) {
     let currentList = getBookFromLocalStorage();
     let index = currentList.findIndex(element => element.Title === title);
@@ -95,7 +49,5 @@ function removeFromBookFavorites(title) {
     }
     addBooksToLocalStorage(currentList);
 }
-
-removeFromBookFavorites("Lord of the Rings")
 
 // End Local Storage 
