@@ -45,8 +45,8 @@ function FindBooksByTitle(titleText, someFunction){
                         Type: "Book",
                         Title: book.title,
                         Author: book.author_name,
-                        PublishYear: book.first_publish_year,
-                        CoverLink: "https://covers.openlibrary.org/b/id/" + book.cover_i + "-L.jpg" 
+                        Subtitle: "Released in " + book.first_publish_year,
+                        ImageURL: "https://covers.openlibrary.org/b/id/" + book.cover_i + "-L.jpg" 
                     });
                 });
             } else {
@@ -98,13 +98,17 @@ function findMoviesByTitle(titleText, callback){
                 foundMovies.push({
                     Type: "Movie",
                     Title: movie.Title,
-                    Year: movie.Year,
-                    Poster: movie.Poster
+                    Subtitle: "Released in " + movie.Year,
+                    ImageURL: movie.Poster
                 })
             })
             callback(foundMovies);
         } else {
-            callback(data.Error);
+            foundMovies.push({
+                Type: "Error",
+                    ErrorMessage: data.Error
+            })
+            callback(foundMovies);
         }
     })
 }
