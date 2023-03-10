@@ -64,3 +64,4 @@ function removeFromBookFavorites(title) {
 }
 
 // End Local Storage 
+addMovie({Title:'Movie1'})
