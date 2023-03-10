@@ -1,4 +1,4 @@
-let movieAPILink = "http://www.omdbapi.com/?apikey=";
+let movieAPILink = "https://www.omdbapi.com/?apikey=";
 let movieAPIKey = "ab6fe753";
 
 /*******************************************************
