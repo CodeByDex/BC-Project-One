@@ -54,7 +54,8 @@ function DisplayResults(results){
             {
                 let newDivTile = document.createElement("div");
                     newDivTile.classList.add("tile")
-                    newDivTile.classList.add("is-3")
+                    newDivTile.classList.add("is-4")
+                    newDivTile.classList.add("p-2")
 
                 let newCard = document.createElement("div");
                     newCard.classList.add("card")

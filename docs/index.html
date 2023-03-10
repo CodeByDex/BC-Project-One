@@ -12,15 +12,11 @@
     <body>
         <header>
             <nav class="navbar">
-                <div class="navbar-menu"> 
-                    <div class="navbar-end">
-                        <a class="navbar-item" href="mylist.html">My List</a>
-                    </div>  
-                </div>
-                
+                <a class="navbar-item is-white" href="mylist.html">My List</a>
             </nav>
         </header>
-        <main>
+        <main class="hero is-fullheight header-image">
+            
             <section id="search" class="section is-medium">
                 <div class="card has-text-centered">
                     <div class="card-header">
@@ -29,16 +25,16 @@
                     <div class="card-content">
                         <div class="content">
                             <input type="radio" id="Books" name="search-type">
-                            <label class="button" for="Books">Books</label>
+                            <label class="button is-dark" for="Books">Books</label>
                             <input type="radio" id="Movies" name="search-type"> 
-                            <label class="button" for="Movies">Movies</label><br>
+                            <label class="button is-dark" for="Movies">Movies</label><br>
                             <input class="input is-rounded m-3" id="search-input">
                             <button class="button" id="search-button">
                                 Search
                             </button>
                         </div>
                     </div>
-                </div>
+                
 
             </section>
             <section class="section tile is-ancestor" id="results">
@@ -53,8 +49,8 @@
                     <div class="card-content p-3">
                         <h3 class="title is-4">Title</h3>
                         <h4 class="subtitle is-5">Author/Director</h4>
-                        <div class="card-footer"></div>
-                            <a class="add-favorite card-footer-item button is-fullwidth">Add to my List</a>
+                        <div class="card-footer">
+                            <a class="add-favorite card-footer-item button is-fullwidth is-dark">Add to my List</a>
                         </div>
                     </div>
     
@@ -62,6 +58,7 @@
                 </div>
                
             </section>
+            </div>
 
         </main>
         <footer>
