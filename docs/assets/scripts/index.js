@@ -67,7 +67,7 @@ function DisplayResults(results){
                     newFigure.classList.add("is-4by3")
 
                 let newImage = document.createElement("img");
-                    newImage.setAttribute("src", "https://placekitten.com/200")
+                    newImage.setAttribute("src", result.ImageURL)
                     newImage.setAttribute("alt", "Movie Title Alt")
 
                 let newDivContent = document.createElement("div");
@@ -82,7 +82,7 @@ function DisplayResults(results){
                 let newContentSubtitle = document.createElement("h4");
                     newContentSubtitle.classList.add("subtitle");
                     newContentSubtitle.classList.add("is-5");
-                    newContentSubtitle.textContent = "Subtitle";
+                    newContentSubtitle.textContent = result.Subtitle;
 
                 let newCardFooter = document.createElement("div");
                     newCardFooter.classList.add("card-footer");
@@ -126,9 +126,9 @@ function clickAddButton(event) {
     let subtitle = clickedCard.querySelector("h4").textContent;
     let imageURL = clickedCard.querySelector("img").getAttribute("src");
     if (currentResultType === "book") {
-        addBook({Title: title, Author: subtitle, ImageURL: imageURL})
+        addBook({Title: title, Subtitle: subtitle, ImageURL: imageURL})
     } else {
-        addMovie({Title: title, Author: subtitle, ImageURL: imageURL})
+        addMovie({Title: title, Subtitle: subtitle, ImageURL: imageURL})
     }
 };
 

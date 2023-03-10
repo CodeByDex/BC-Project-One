@@ -30,13 +30,13 @@ function LoadCards(movieEL, movies, type) {
         newDiv.classList.add("container")
 
         newImg.setAttribute("alt", "Movie Image");
-        newImg.setAttribute("src", "https://placekitten.com/200");
+        newImg.setAttribute("src", mov.ImageURL);
         
         newTitle.textContent = mov.Title;
         newTitle.classList.add("title");
         newTitle.classList.add("3")
 
-        newAuthor.textContent = "Author Name";
+        newAuthor.textContent = mov.Subtitle;
         newAuthor.classList.add("subtitle");
         newAuthor.classList.add("4")
 
