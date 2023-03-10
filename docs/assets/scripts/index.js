@@ -1,3 +1,5 @@
+let currentResultType = "";
+
 const resultsEL = document.querySelector("#results");
 const booksCheck = document.querySelector("#Books");
 const moviesCheck = document.querySelector("#Movies");
@@ -22,8 +24,10 @@ function clickedSearch(){
     searchButton.setAttribute("disabled", "");
 
     if(SearchType() === "Movie"){
+        currentResultType = "movie";
         findMoviesByTitle(searchValue, DisplayResults);
     } else if (SearchType() === "Book") {
+        currentResultType = "book";
         FindBooksByTitle(searchValue, DisplayResults);
     } else {
         
@@ -39,16 +43,6 @@ function SearchType(){
     }
 };
 
-/*
-    <div class="tile is-3">
-        <div class="card">
-            <img src="placeholder" alt="book/movie-image"> 
-            <h3>Title</h3>
-            <h4>Author/Director</h4>
-            <button class="add-favorite">add to my list</button>
-        </div>
-    </div>
-*/
 function DisplayResults(results){
 
     if (results.length != 0)
@@ -58,18 +52,61 @@ function DisplayResults(results){
         results.forEach(result => {
             if (result.Type != "Error")
             {
-                let newTile = document.createElement("div");
-                let newAddButton = document.createElement("button");
+                let newDivTile = document.createElement("div");
+                    newDivTile.classList.add("tile")
+                    newDivTile.classList.add("is-3")
 
-                newTile.textContent = result.Title;
+                let newCard = document.createElement("div");
+                    newCard.classList.add("card")
 
-                newAddButton.textContent = "Add to Favorites";
-                newAddButton.classList.add("button");
-                newAddButton.addEventListener("click", clickAddButton);
+                let newCardImage = document.createElement("div");
+                    newCardImage.classList.add("card-image")
 
-                newTile.appendChild(newAddButton);
-        
-                resultsEL.appendChild(newTile);
+                let newFigure = document.createElement("figure");
+                    newFigure.classList.add("img")
+                    newFigure.classList.add("is-4by3")
+
+                let newImage = document.createElement("img");
+                    newImage.setAttribute("src", "https://placekitten.com/200")
+                    newImage.setAttribute("alt", "Movie Title Alt")
+
+                let newDivContent = document.createElement("div");
+                    newDivContent.classList.add("card-content")
+                    newDivContent.classList.add("p-3")
+
+                let newContentTitle = document.createElement("h3")
+                    newContentTitle.classList.add("title")
+                    newContentTitle.classList.add("is-4")
+                    newContentTitle.textContent = result.Title;
+
+                let newContentSubtitle = document.createElement("h4");
+                    newContentSubtitle.classList.add("subtitle");
+                    newContentSubtitle.classList.add("is-5");
+                    newContentSubtitle.textContent = "Subtitle";
+
+                let newCardFooter = document.createElement("div");
+                    newCardFooter.classList.add("card-footer");
+                    
+                let newAddListButton = document.createElement("a");
+                    newAddListButton.classList.add("add-favorite"); // Check class type
+                    newAddListButton.classList.add("card-footer-item");
+                    newAddListButton.classList.add("button");
+                    newAddListButton.classList.add("is-fullwidth");
+                    newAddListButton.textContent = "Add to my List";
+                newAddListButton.addEventListener("click", clickAddButton)
+                
+                
+                newDivTile.appendChild(newCard);
+                newCard.appendChild(newCardImage);
+                newCardImage.appendChild(newFigure);
+                newFigure.appendChild(newImage);
+                newCard.appendChild(newDivContent);
+                newDivContent.appendChild(newContentTitle);
+                newDivContent.appendChild(newContentSubtitle);
+                newDivContent.appendChild(newCardFooter);
+                newCardFooter.appendChild(newAddListButton);
+                resultsEL.appendChild(newDivTile);
+
             } else {
                 resultsEL.textContent = result.ErrorMessage;
             }
@@ -84,5 +121,14 @@ function DisplayResults(results){
 };
 
 function clickAddButton(event) {
-    console.log(event.target.parentNode);
+    let clickedCard = event.target.parentNode.parentNode.parentNode;
+    let title = clickedCard.querySelector("h3").textContent;
+    let subtitle = clickedCard.querySelector("h4").textContent;
+    let imageURL = clickedCard.querySelector("img").getAttribute("src");
+    if (currentResultType === "book") {
+        addBook({Title: title, Author: subtitle, ImageURL: imageURL})
+    } else {
+        addMovie({Title: title, Author: subtitle, ImageURL: imageURL})
+    }
 };
+
