@@ -1,3 +1,5 @@
+let currentResultType = "";
+
 const resultsEL = document.querySelector("#results");
 const booksCheck = document.querySelector("#Books");
 const moviesCheck = document.querySelector("#Movies");
@@ -22,8 +24,10 @@ function clickedSearch(){
     searchButton.setAttribute("disabled", "");
 
     if(SearchType() === "Movie"){
+        currentResultType = "movie";
         findMoviesByTitle(searchValue, DisplayResults);
     } else if (SearchType() === "Book") {
+        currentResultType = "book";
         FindBooksByTitle(searchValue, DisplayResults);
     } else {
         
@@ -117,5 +121,14 @@ function DisplayResults(results){
 };
 
 function clickAddButton(event) {
-    console.log(event.target.parentNode);
+    let clickedCard = event.target.parentNode.parentNode.parentNode;
+    let title = clickedCard.querySelector("h3").textContent;
+    let subtitle = clickedCard.querySelector("h4").textContent;
+    let imageURL = clickedCard.querySelector("img").getAttribute("src");
+    if (currentResultType === "book") {
+        addBook({Title: title, Author: subtitle, ImageURL: imageURL})
+    } else {
+        addMovie({Title: title, Author: subtitle, ImageURL: imageURL})
+    }
 };
+
