@@ -60,6 +60,7 @@ function DisplayResults(results) {
 
                 let newCard = document.createElement("div");
                 newCard.classList.add("card")
+                newCard.classList.add("pt-4")
 
                 let newCardImage = document.createElement("div");
                 newCardImage.classList.add("card-image")
