@@ -21,6 +21,11 @@ function clickedSearch() {
     let searchValue = searchInputEL.value;
 
     if (searchValue.length < 1) {
+        let pEL = document.createElement("p");
+        pEL.textContent = "Please Enter A Value";
+
+        openModal(pEL);
+
         return;
     }
 
@@ -107,11 +112,17 @@ function DisplayResults(results) {
                 resultsEL.appendChild(newDivTile);
 
             } else {
-                resultsEL.textContent = result.ErrorMessage;
+                let pEL = document.createElement("p");
+                pEL.textContent = result.ErrorMessage;
+
+                openModal(pEL);
             }
         });
     } else {
-        results.textContent = "No Results Found";
+        let pEL = document.createElement("p");
+        pEL.textContent = "No Results Found";
+
+        openModal(pEL);
     }
 
     searchInputEL.value = "";
