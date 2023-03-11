@@ -17,9 +17,24 @@ async function LoadBooks() {
     LoadCards(booksEL, books, "Book");
 };
 
+function LoadEmptyListMessage(listEL, message){
+    let newDiv = document.createElement("div");
+    let newMessage = document.createElement("p");
+
+    newDiv.classList.add("box");
+    newDiv.classList.add("container")
+
+    newMessage.textContent = message;
+
+    newDiv.appendChild(newMessage);
+
+    listEL.appendChild(newDiv);
+}
+
 function LoadCards(movieEL, movies, type) {
 
     if (movies.length === 0) {
+        LoadEmptyListMessage(movieEL, `You've not added anything to your ${type} list yet!`)
         return;
     }
 
@@ -65,6 +80,7 @@ function LoadCards(movieEL, movies, type) {
  ****************************************/
 function RemoveItem(event) {
     const cardDiv = event.target.parentNode;
+    const listDiv = cardDiv.parentNode;
     const title = cardDiv.querySelector("h3").textContent;
 
     if (event.target.dataset.Type === "Book") {
@@ -73,5 +89,10 @@ function RemoveItem(event) {
         removeFromMovieFavorites(title);
     }
 
-    cardDiv.parentNode.removeChild(cardDiv);
+    listDiv.removeChild(cardDiv);
+
+    if (listDiv.childNodes.length === 0)
+    {
+        LoadEmptyListMessage(listDiv, "You've finished all you items! Go to Search to add more!")
+    }
 };
