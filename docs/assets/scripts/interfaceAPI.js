@@ -95,15 +95,22 @@ function findMoviesByTitle(titleText, callback) {
             if (!data.Error) {
                 data.Search.forEach(movie => {
                     let subtitle = "Released in " + movie.Year;
+                    let imgURL;
                     if (movie.Year === undefined) {
                         subtitle = "Unknown Release Date";
                     }
-                    
+
+                    if (movie.Poster == "N/A") {
+                        imgURL = "./assets/images/320x500.png"
+                    } else {
+                        imgURL = movie.Poster;
+                    }
+
                     foundMovies.push({
                         Type: "Movie",
                         Title: movie.Title,
                         Subtitle: subtitle,
-                        ImageURL: (movie.Poster ? movie.Poster : "./assets/images/320x500.png")
+                        ImageURL: imgURL
                     })
                 })
                 callback(foundMovies);
