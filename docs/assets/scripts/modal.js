@@ -1,3 +1,7 @@
+/***********************************************
+ * This is an extension of Bulma; Bulma must be included on the site to use this
+ * Add this js file to any webpage to enable a modal dialog that you can call using the openModal method
+ ***********************************************/
 window.addEventListener("load", () => {
     AddModalElement()
 });

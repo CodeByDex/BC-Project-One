@@ -3,11 +3,11 @@ h2 {
     padding: 20px;
 }
 
-#search input[type="radio"]{
+#search input[type="radio"] {
     display: none;
 }
 
-#search input[type="radio"]:checked + label {
+#search input[type="radio"]:checked+label {
     background: grey
 }
 
@@ -21,13 +21,13 @@ h2 {
 }
 
 .navbar-item :hover {
-    background-image: linear-gradient( grey, red);
+    background-image: linear-gradient(grey, red);
     color: black;
 }
 
 .navbar-item {
-     color: white;
-     
+    color: white;
+
 }
 
 .navbar {
@@ -40,7 +40,7 @@ h2 {
 
 #results {
     flex-wrap: wrap;
-   
+
 }
 
 #results .card {
@@ -51,8 +51,3 @@ h2 {
 #results .card-img {
     height: 100%;
 }
-
-
-
-
-

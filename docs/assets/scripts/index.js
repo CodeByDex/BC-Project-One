@@ -7,15 +7,18 @@ const searchButton = document.querySelector("#search-button");
 window.addEventListener("load", () => {
     resultsEL.innerHTML = "";
     searchButton.addEventListener("click", clickedSearch);
-    searchInputEL.addEventListener("keydown", (event) =>{
-        if (event.key === "Enter")
-        {
+    searchInputEL.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
             clickedSearch();
         }
     })
 
     booksCheck.checked = true;
 });
+
+/**********************************************
+ * Event Handlers
+ **********************************************/
 
 function clickedSearch() {
     let searchValue = searchInputEL.value;
@@ -37,6 +40,40 @@ function clickedSearch() {
         FindBooksByTitle(searchValue, DisplayResults);
     }
 };
+
+function clickAddButton(event) {
+    let clickedCard = event.target.parentNode.parentNode.parentNode;
+    let title = clickedCard.querySelector("h3").textContent;
+    let subtitle = clickedCard.querySelector("h4").textContent;
+    let imageURL = clickedCard.querySelector("img").getAttribute("src");
+
+    if (event.target.dataset.Type === "Book") {
+        if (event.target.dataset.Mode === "Add") {
+            addBook({ Title: title, Subtitle: subtitle, ImageURL: imageURL })
+        } else {
+            removeFromBookFavorites(title);
+        }
+    } else {
+        if (event.target.dataset.Mode === "Add") {
+            addMovie({ Title: title, Subtitle: subtitle, ImageURL: imageURL })
+        } else {
+            removeFromMovieFavorites(title);
+        }
+    }
+
+    if (event.target.dataset.Mode === "Add") {
+        event.target.dataset.Mode = "Remove";
+        event.target.textContent = "Remove from List";
+    } else {
+        event.target.dataset.Mode = "Add";
+        event.target.textContent = "Add to my List";
+    }
+};
+
+
+/**********************************************
+ * DOM Functions
+ *********************************************/
 
 function SearchType() {
     if (booksCheck.checked) {
@@ -122,15 +159,13 @@ async function CreateResultCard(result) {
 
     let existingList;
 
-    if(result.Type === "Movie")
-    {
+    if (result.Type === "Movie") {
         existingList = getMoviesFromLocalStorage();
     } else {
         existingList = getBooksFromLocalStorage();
     }
 
-    if (existingList.findIndex(x => x.Title === result.Title) >= 0)
-    {
+    if (existingList.findIndex(x => x.Title === result.Title) >= 0) {
         newAddListButton.textContent = "Remove from List";
         newAddListButton.dataset.Mode = "Remove";
         newAddListButton.addEventListener("click", clickAddButton);
@@ -153,33 +188,4 @@ async function CreateResultCard(result) {
     newCardFooter.appendChild(newAddListButton);
     resultsEL.appendChild(newDivTile);
 }
-
-function clickAddButton(event) {
-    let clickedCard = event.target.parentNode.parentNode.parentNode;
-    let title = clickedCard.querySelector("h3").textContent;
-    let subtitle = clickedCard.querySelector("h4").textContent;
-    let imageURL = clickedCard.querySelector("img").getAttribute("src");
-
-    if (event.target.dataset.Type === "Book") {
-        if (event.target.dataset.Mode === "Add") {
-            addBook({ Title: title, Subtitle: subtitle, ImageURL: imageURL })
-        } else {
-            removeFromBookFavorites(title);
-        }
-    } else {
-        if (event.target.dataset.Mode === "Add") {
-            addMovie({ Title: title, Subtitle: subtitle, ImageURL: imageURL })
-        } else {
-            removeFromMovieFavorites(title);
-        }
-    }
-
-    if (event.target.dataset.Mode === "Add") {
-        event.target.dataset.Mode = "Remove";
-        event.target.textContent = "Remove from List";
-    } else {
-        event.target.dataset.Mode = "Add";
-        event.target.textContent = "Add to my List";
-    }
-};
 

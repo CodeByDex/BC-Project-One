@@ -1,8 +1,5 @@
-let movieAPILink = "https://www.omdbapi.com/?apikey=";
-let movieAPIKey = "ab6fe753";
-
 /*******************************************************
- * 
+ * Book API
  * https://openlibrary.org/search.json?q=the+lord+of+the+rings
  * https://openlibrary.org/search.json?title=the+lord+of+the+rings
  * https://openlibrary.org/search.json?author=tolkien&sort=new
@@ -16,6 +13,7 @@ function FindBookByTitle(titleText, someFunction) {
         someFunction(results[0]);
     })
 };
+
 function FindBooksByTitle(titleText, someFunction) {
     let params = new URLSearchParams();
 
@@ -63,6 +61,12 @@ function FindBooksByTitle(titleText, someFunction) {
         });
 };
 
+/*************************************************
+ * Movie API
+ *************************************************/
+const movieAPILink = "https://www.omdbapi.com/?apikey=";
+const movieAPIKey = "ab6fe753";
+
 function findMovieByTitle(titleText, callback) {
     fetch(movieAPILink + movieAPIKey + "&t=" + titleText)
         .then(response => {
@@ -98,7 +102,7 @@ function findMoviesByTitle(titleText, callback) {
                     if (movie.Year === undefined) {
                         subtitle = "Unknown Release Date";
                     }
-                    
+
                     foundMovies.push({
                         Type: "Movie",
                         Title: movie.Title,
