@@ -13,90 +13,91 @@ window.addEventListener("load", () => {
     booksCheck.checked = true;
 });
 
-function clickedSearch(){
+function clickedSearch() {
     let searchValue = searchInputEL.value;
-    
-    if (searchValue.length < 1)
-    {
+
+    if (searchValue.length < 1) {
+        let pEL = document.createElement("p");
+        pEL.textContent = "Please Enter A Value";
+
+        openModal(pEL);
+
         return;
     }
 
     searchButton.setAttribute("disabled", "");
 
-    if(SearchType() === "Movie"){
+    if (SearchType() === "Movie") {
         currentResultType = "movie";
         findMoviesByTitle(searchValue, DisplayResults);
     } else if (SearchType() === "Book") {
         currentResultType = "book";
         FindBooksByTitle(searchValue, DisplayResults);
     } else {
-        
+
     }
 };
 
-function SearchType(){
-    if(booksCheck.checked) {
+function SearchType() {
+    if (booksCheck.checked) {
         return "Book";
-    } else
-    {
+    } else {
         return "Movie";
     }
 };
 
-function DisplayResults(results){
+function DisplayResults(results) {
 
-    if (results.length != 0)
-    {
+    if (results.length != 0) {
         resultsEL.innerHTML = "";
 
         results.forEach(result => {
-            if (result.Type != "Error")
-            {
+            if (result.Type != "Error") {
                 let newDivTile = document.createElement("div");
-                    newDivTile.classList.add("tile")
-                    newDivTile.classList.add("is-4")
-                    newDivTile.classList.add("p-2")
+                newDivTile.classList.add("tile")
+                newDivTile.classList.add("is-4")
+                newDivTile.classList.add("p-2")
 
                 let newCard = document.createElement("div");
-                    newCard.classList.add("card")
+                newCard.classList.add("card")
 
                 let newCardImage = document.createElement("div");
-                    newCardImage.classList.add("card-image")
+                newCardImage.classList.add("card-image")
 
                 let newFigure = document.createElement("figure");
-                    newFigure.classList.add("img")
-                    newFigure.classList.add("is-4by3")
+                newFigure.classList.add("img")
+                newFigure.classList.add("is-4by3")
 
                 let newImage = document.createElement("img");
-                    newImage.setAttribute("src", result.ImageURL)
-                    newImage.setAttribute("alt", "Movie Title Alt")
+                newImage.setAttribute("src", result.ImageURL)
+                newImage.setAttribute("alt", "Movie Title Alt")
 
                 let newDivContent = document.createElement("div");
-                    newDivContent.classList.add("card-content")
-                    newDivContent.classList.add("p-3")
+                newDivContent.classList.add("card-content")
+                newDivContent.classList.add("p-3")
 
                 let newContentTitle = document.createElement("h3")
-                    newContentTitle.classList.add("title")
-                    newContentTitle.classList.add("is-4")
-                    newContentTitle.textContent = result.Title;
+                newContentTitle.classList.add("title")
+                newContentTitle.classList.add("is-4")
+                newContentTitle.textContent = result.Title;
 
                 let newContentSubtitle = document.createElement("h4");
-                    newContentSubtitle.classList.add("subtitle");
-                    newContentSubtitle.classList.add("is-5");
-                    newContentSubtitle.textContent = result.Subtitle;
+                newContentSubtitle.classList.add("subtitle");
+                newContentSubtitle.classList.add("is-5");
+                newContentSubtitle.textContent = result.Subtitle;
 
                 let newCardFooter = document.createElement("div");
-                    newCardFooter.classList.add("card-footer");
-                    
+                newCardFooter.classList.add("card-footer");
+
                 let newAddListButton = document.createElement("a");
-                    newAddListButton.classList.add("add-favorite"); // Check class type
-                    newAddListButton.classList.add("card-footer-item");
-                    newAddListButton.classList.add("button");
-                    newAddListButton.classList.add("is-fullwidth");
-                    newAddListButton.textContent = "Add to my List";
+                newAddListButton.classList.add("add-favorite"); // Check class type
+                newAddListButton.classList.add("card-footer-item");
+                newAddListButton.classList.add("button");
+                newAddListButton.classList.add("is-fullwidth");
+                newAddListButton.textContent = "Add to my List";
                 newAddListButton.addEventListener("click", clickAddButton)
-                
-                
+
+
                 newDivTile.appendChild(newCard);
                 newCard.appendChild(newCardImage);
                 newCardImage.appendChild(newFigure);
@@ -109,11 +110,17 @@ function DisplayResults(results){
                 resultsEL.appendChild(newDivTile);
 
             } else {
-                resultsEL.textContent = result.ErrorMessage;
+                let pEL = document.createElement("p");
+                pEL.textContent = result.ErrorMessage;
+
+                openModal(pEL);
             }
         });
     } else {
-        results.textContent = "No Results Found";
+        let pEL = document.createElement("p");
+        pEL.textContent = "No Results Found";
+
+        openModal(pEL);
     }
 
     searchInputEL.value = "";
@@ -127,9 +134,9 @@ function clickAddButton(event) {
     let subtitle = clickedCard.querySelector("h4").textContent;
     let imageURL = clickedCard.querySelector("img").getAttribute("src");
     if (currentResultType === "book") {
-        addBook({Title: title, Subtitle: subtitle, ImageURL: imageURL})
+        addBook({ Title: title, Subtitle: subtitle, ImageURL: imageURL })
     } else {
-        addMovie({Title: title, Subtitle: subtitle, ImageURL: imageURL})
+        addMovie({ Title: title, Subtitle: subtitle, ImageURL: imageURL })
     }
 };
 
