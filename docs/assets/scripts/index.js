@@ -9,6 +9,12 @@ const searchButton = document.querySelector("#search-button");
 window.addEventListener("load", () => {
     resultsEL.innerHTML = "";
     searchButton.addEventListener("click", clickedSearch);
+    searchInputEL.addEventListener("keydown", (event) =>{
+        if (event.key === "Enter")
+        {
+            clickedSearch();
+        }
+    })
 
     booksCheck.checked = true;
 });
