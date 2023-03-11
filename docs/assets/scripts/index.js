@@ -75,31 +75,33 @@ function DisplayResults(results) {
 
 async function CreateResultCard(result) {
     let newDivTile = document.createElement("div");
-    newDivTile.classList.add("tile");
-    newDivTile.classList.add("is-4");
-    newDivTile.classList.add("p-2");
+    newDivTile.classList.add("tile")
+    newDivTile.classList.add("is-4")
+    newDivTile.classList.add("p-2")
 
     let newCard = document.createElement("div");
-    newCard.classList.add("card");
+    newCard.classList.add("card")
+    newCard.classList.add("pt-4")
 
     let newCardImage = document.createElement("div");
-    newCardImage.classList.add("card-image");
+    newCardImage.classList.add("card-image")
+    newCardImage.classList.add("has-text-centered")
 
     let newFigure = document.createElement("figure");
-    newFigure.classList.add("img");
-    newFigure.classList.add("is-4by3");
+    newFigure.classList.add("img")
+    newFigure.classList.add("is-3by4")
 
     let newImage = document.createElement("img");
-    newImage.setAttribute("src", result.ImageURL);
-    newImage.setAttribute("alt", "Movie Title Alt");
+    newImage.setAttribute("src", result.ImageURL)
+    newImage.setAttribute("alt", "Movie Title Alt")
 
     let newDivContent = document.createElement("div");
-    newDivContent.classList.add("card-content");
-    newDivContent.classList.add("p-3");
+    newDivContent.classList.add("card-content")
+    newDivContent.classList.add("p-3")
 
-    let newContentTitle = document.createElement("h3");
-    newContentTitle.classList.add("title");
-    newContentTitle.classList.add("is-4");
+    let newContentTitle = document.createElement("h3")
+    newContentTitle.classList.add("title")
+    newContentTitle.classList.add("is-4")
     newContentTitle.textContent = result.Title;
 
     let newContentSubtitle = document.createElement("h4");
@@ -115,6 +117,7 @@ async function CreateResultCard(result) {
     newAddListButton.classList.add("card-footer-item");
     newAddListButton.classList.add("button");
     newAddListButton.classList.add("is-fullwidth");
+    newAddListButton.textContent = "Add to my List";
     newAddListButton.dataset.Type = result.Type;
 
     let existingList;
@@ -137,6 +140,7 @@ async function CreateResultCard(result) {
         newAddListButton.dataset.Mode = "Add";
         newAddListButton.addEventListener("click", clickAddButton);
     }
+
 
     newDivTile.appendChild(newCard);
     newCard.appendChild(newCardImage);
