@@ -49,7 +49,7 @@ function FindBooksByTitle(titleText, someFunction) {
                         Title: book.title,
                         Author: book.author_name,
                         Subtitle: subtitle,
-                        ImageURL: "https://covers.openlibrary.org/b/id/" + book.cover_i + "-L.jpg"
+                        ImageURL: (book.cover_i ? "https://covers.openlibrary.org/b/id/" + book.cover_i + "-L.jpg" : "./assets/images/320x500.png")
                     });
                 });
             } else {
@@ -103,7 +103,7 @@ function findMoviesByTitle(titleText, callback) {
                         Type: "Movie",
                         Title: movie.Title,
                         Subtitle: subtitle,
-                        ImageURL: movie.Poster
+                        ImageURL: (movie.Poster ? movie.Poster : "./assets/images/320x500.png")
                     })
                 })
                 callback(foundMovies);
