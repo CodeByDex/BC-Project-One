@@ -1,20 +1,21 @@
-// Begin Movie Local Storage
+/*********************************************
+ * Move Storage Functions
+ *********************************************/
 function addMoviesToLocalStorage(listMovies) {
     localStorage.setItem('listMovies', JSON.stringify(listMovies));
-}    
+}
 
 function getMoviesFromLocalStorage() {
     let movies = JSON.parse(localStorage.getItem('listMovies'));
-    
-    if (movies === null)
-    {
+
+    if (movies === null) {
         movies = [];
     }
 
     return movies;
-}    
+}
 
-function addMovie (movie) {
+function addMovie(movie) {
     removeFromMovieFavorites(movie.Title);
     let currentList = getMoviesFromLocalStorage();
     currentList.push(movie);
@@ -25,28 +26,30 @@ function removeFromMovieFavorites(title) {
     let currentList = getMoviesFromLocalStorage();
     let index = currentList.findIndex(element => element.Title === title);
 
-    if (index != -1 ) {
+    if (index != -1) {
         currentList.splice(index, 1)
     }
     addMoviesToLocalStorage(currentList);
 }
 
-// Begin Books Local Storage
+/**********************************************
+ * Book Storage Functions
+ **********************************************/
 function addBooksToLocalStorage(listBooks) {
     localStorage.setItem('listBooks', JSON.stringify(listBooks));
-}    
+}
 
 function getBooksFromLocalStorage() {
     let books = JSON.parse(localStorage.getItem('listBooks'));
 
-    if (books === null){
+    if (books === null) {
         books = [];
     };
 
     return books;
-}    
+}
 
-function addBook (book) {
+function addBook(book) {
     removeFromBookFavorites(book.Title);
     let currentBookList = getBooksFromLocalStorage();
     currentBookList.push(book);
@@ -57,10 +60,8 @@ function removeFromBookFavorites(title) {
     let currentList = getBooksFromLocalStorage();
     let index = currentList.findIndex(element => element.Title === title);
 
-    if (index != -1 ) {
+    if (index != -1) {
         currentList.splice(index, 1)
     }
     addBooksToLocalStorage(currentList);
 }
-
-// End Local Storage 

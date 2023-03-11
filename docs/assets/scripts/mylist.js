@@ -3,17 +3,23 @@ window.addEventListener("load", () => {
     LoadBooks();
 });
 
-async function LoadMovies(){
+async function LoadMovies() {
     const movies = getMoviesFromLocalStorage();
     const movieEL = document.querySelector("#My-Movies");
 
     LoadCards(movieEL, movies, "Movie");
 };
 
+async function LoadBooks() {
+    const books = getBooksFromLocalStorage();
+    const booksEL = document.querySelector("#My-Books");
+
+    LoadCards(booksEL, books, "Book");
+};
+
 function LoadCards(movieEL, movies, type) {
 
-    if(movies.length === 0)
-    {
+    if (movies.length === 0) {
         return;
     }
 
@@ -31,7 +37,7 @@ function LoadCards(movieEL, movies, type) {
 
         newImg.setAttribute("alt", "Movie Image");
         newImg.setAttribute("src", mov.ImageURL);
-        
+
         newTitle.textContent = mov.Title;
         newTitle.classList.add("title");
         newTitle.classList.add("3")
@@ -52,24 +58,20 @@ function LoadCards(movieEL, movies, type) {
         newDiv.appendChild(newAuthor);
         newDiv.appendChild(newButton);
     });
-}
-
-async function LoadBooks(){
-    const books = getBooksFromLocalStorage();
-    const booksEL = document.querySelector("#My-Books");
-
-    LoadCards(booksEL, books, "Book");
 };
 
-function RemoveItem(event){
+/***************************************
+ * Event Handler
+ ****************************************/
+function RemoveItem(event) {
     const cardDiv = event.target.parentNode;
     const title = cardDiv.querySelector("h3").textContent;
 
-    if (event.target.dataset.Type === "Book"){
+    if (event.target.dataset.Type === "Book") {
         removeFromBookFavorites(title);
     } else {
         removeFromMovieFavorites(title);
     }
 
     cardDiv.parentNode.removeChild(cardDiv);
-}
+};
