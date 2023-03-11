@@ -1,5 +1,3 @@
-let currentResultType = "";
-
 const resultsEL = document.querySelector("#results");
 const booksCheck = document.querySelector("#Books");
 const moviesCheck = document.querySelector("#Movies");
@@ -9,6 +7,12 @@ const searchButton = document.querySelector("#search-button");
 window.addEventListener("load", () => {
     resultsEL.innerHTML = "";
     searchButton.addEventListener("click", clickedSearch);
+    searchInputEL.addEventListener("keydown", (event) =>{
+        if (event.key === "Enter")
+        {
+            clickedSearch();
+        }
+    })
 
     booksCheck.checked = true;
 });
@@ -28,13 +32,9 @@ function clickedSearch() {
     searchButton.setAttribute("disabled", "");
 
     if (SearchType() === "Movie") {
-        currentResultType = "movie";
         findMoviesByTitle(searchValue, DisplayResults);
     } else if (SearchType() === "Book") {
-        currentResultType = "book";
         FindBooksByTitle(searchValue, DisplayResults);
-    } else {
-
     }
 };
 
@@ -95,6 +95,8 @@ function DisplayResults(results) {
                 newAddListButton.classList.add("button");
                 newAddListButton.classList.add("is-fullwidth");
                 newAddListButton.textContent = "Add to my List";
+                newAddListButton.dataset.Type = result.Type;
+                newAddListButton.dataset.Mode = "Add";
                 newAddListButton.addEventListener("click", clickAddButton)
 
 
@@ -133,10 +135,27 @@ function clickAddButton(event) {
     let title = clickedCard.querySelector("h3").textContent;
     let subtitle = clickedCard.querySelector("h4").textContent;
     let imageURL = clickedCard.querySelector("img").getAttribute("src");
-    if (currentResultType === "book") {
-        addBook({ Title: title, Subtitle: subtitle, ImageURL: imageURL })
+
+    if (event.target.dataset.Type === "Book") {
+        if (event.target.dataset.Mode === "Add") {
+            addBook({ Title: title, Subtitle: subtitle, ImageURL: imageURL })
+        } else {
+            removeFromBookFavorites(title);
+        }
     } else {
-        addMovie({ Title: title, Subtitle: subtitle, ImageURL: imageURL })
+        if (event.target.dataset.Mode === "Add") {
+            addMovie({ Title: title, Subtitle: subtitle, ImageURL: imageURL })
+        } else {
+            removeFromMovieFavorites(title);
+        }
+    }
+
+    if (event.target.dataset.Mode === "Add") {
+        event.target.dataset.Mode = "Remove";
+        event.target.textContent = "Remove from List";
+    } else {
+        event.target.dataset.Mode = "Add";
+        event.target.textContent = "Add to my List";
     }
 };
 
