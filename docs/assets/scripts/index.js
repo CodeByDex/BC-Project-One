@@ -60,13 +60,15 @@ function DisplayResults(results) {
 
                 let newCard = document.createElement("div");
                 newCard.classList.add("card")
+                newCard.classList.add("pt-4")
 
                 let newCardImage = document.createElement("div");
                 newCardImage.classList.add("card-image")
+                newCardImage.classList.add("has-text-centered")
 
                 let newFigure = document.createElement("figure");
                 newFigure.classList.add("img")
-                newFigure.classList.add("is-4by3")
+                newFigure.classList.add("is-3by4")
 
                 let newImage = document.createElement("img");
                 newImage.setAttribute("src", result.ImageURL)
