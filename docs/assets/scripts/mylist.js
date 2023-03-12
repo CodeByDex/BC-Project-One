@@ -97,6 +97,6 @@ function RemoveItem(event) {
 
     if (listDiv.childNodes.length === 0)
     {
-        LoadEmptyListMessage(listDiv, "You've finished all you items! Go to Search to add more!")
+        LoadEmptyListMessage(listDiv, "You've finished all your items! Go to Search to add more!")
     }
 };
