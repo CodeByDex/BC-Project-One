@@ -51,3 +51,8 @@ h2 {
 #results .card-img {
     height: 100%;
 }
+
+.box {
+    width: 75%;
+    height: 100%;
+}

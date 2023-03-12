@@ -46,9 +46,12 @@ function LoadCards(movieEL, movies, type) {
         let newTitle = document.createElement("h3");
         let newAuthor = document.createElement("h4");
         let newButton = document.createElement("button");
-
         newDiv.classList.add("box");
         newDiv.classList.add("container")
+        newDiv.classList.add('has-text-centered')
+
+
+
 
         newImg.setAttribute("alt", "Movie Image");
         newImg.setAttribute("src", mov.ImageURL);
@@ -62,6 +65,7 @@ function LoadCards(movieEL, movies, type) {
         newAuthor.classList.add("4")
 
         newButton.textContent = "Remove From List";
+        newButton.classList.add('is-fullwidth')
         newButton.classList.add("button");
         newButton.classList.add("is-dark");
         newButton.dataset.Type = type;
