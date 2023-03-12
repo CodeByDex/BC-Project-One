@@ -118,7 +118,7 @@ async function CreateResultCard(result) {
 
     let newCard = document.createElement("div");
     newCard.classList.add("card")
-    newCard.classList.add("pt-4")
+    newCard.classList.add("p-4")
 
     let newCardImage = document.createElement("div");
     newCardImage.classList.add("card-image")
@@ -135,6 +135,7 @@ async function CreateResultCard(result) {
     let newDivContent = document.createElement("div");
     newDivContent.classList.add("card-content")
     newDivContent.classList.add("p-3")
+    newDivContent.classList.add('has-text-centered')
 
     let newContentTitle = document.createElement("h3")
     newContentTitle.classList.add("title")
@@ -153,6 +154,7 @@ async function CreateResultCard(result) {
     newAddListButton.classList.add("add-favorite"); // Check class type
     newAddListButton.classList.add("card-footer-item");
     newAddListButton.classList.add("button");
+    newAddListButton.classList.add('is-dark')
     newAddListButton.classList.add("is-fullwidth");
     newAddListButton.textContent = "Add to my List";
     newAddListButton.dataset.Type = result.Type;
