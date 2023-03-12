@@ -10,6 +10,12 @@ window.addEventListener("load", () => {
     searchInputEL.addEventListener("keydown", (event) => {
         if (event.key === "Enter") {
             clickedSearch();
+            searchButton.style.backgroundColor = 'lightblue'
+        }
+    })
+    searchInputEL.addEventListener("keyup", (event) => {
+        if (event.key === "Enter") {
+            searchButton.style.backgroundColor = 'white'
         }
     })
 
