@@ -1,50 +1,26 @@
 # BC-Project-One
 Group Project One for Boot Camp
 
-## User Story
-Movie and Book Search Site
+## Description 
+This application allows users to search for their favorite Movies & Books using a simple but effective User Interface.
 
-Allows you to search for movies or books and then shows you related books or movies depending on what you've searched for.
+## Visit the Live Site here:
+ https://code.bydex.co/BC-Project-One/
+ 
+## Usage
+ - Select the BUTTON for whether you are seaching a book or a movie
+ - Use the SEARCH bar to look up the content title
+ - Users are able to add results to a MY LIST page that will save to LOCAL STORAGE
+ - Users are able to remove content from MY LIST simply by clicking "Remove from my list" BUTTON
+ - To view MY LIST page, click MY LIST in the top-left corner of the page
 
-When I search for a movie then I am given a list of movies matching my search
-When I select a movie from the search results then I am given a list of books that match that movie if they exist.
+## Credits
+ - Credit to Bulma.io for CSS display (https://bulma.io/)
+ - OMDB API (https://www.omdbapi.com/)
+ - OpenLibrary API (https://openlibrary.org/developers/api)
 
-Result Enhancements:
-  - Given an Info Card with info about the Book/Movie
-    - Author/Director
-    - Genre
-  - Given an image of the Movie/Book
-  - Given Reviews/Ratings
+## License
+Please refer to the LICENSE in the repo.
 
-When I see a movie or book I am able to add it to my watch or read list
+## Screenshots of Application
 
-When I leave and come back to the site my read/watch list is still there
-
-
-When I select a genre I am given results of movies and books for that genre
-
-When I search for an author/director I am given results 
-
-## APIs
-https://imdb-api.com/
-
-https://openlibrary.org/developers/api
-
-https://mui.com/material-ui/
-
-## Interapp Functions & Objects
-```
-Result {
-  Type: {Movie|Book},
-  Title: text
-}
-
-FindMovieByTitle(titleText, callbackFunction(Result))
-FindBookByTitle(titleText, callbackFunction(Result))
-[Result] GetMovieWatchListFromLocalStorage()
-[Result] GetBookReadListFRomLocalStorage()
-[Result] AddMovieToWatchList(Result)
-[Result] AddBookToReadList(Result)
-[Result] RemoveMoveFromWatchList(Result)
-[Result] RemoveBookFromReadList(Result)
-```
