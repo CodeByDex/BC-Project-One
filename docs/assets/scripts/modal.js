@@ -6,6 +6,7 @@ function openModalWithImage(src, alt) {
     let newImageEl = document.createElement("img");
     newImageEl.setAttribute("src", src);
     newImageEl.setAttribute("alt", alt);
+    newImageEl.style = "justify-self: center;";
     openModal(newImageEl);
 } 
 
@@ -29,6 +30,7 @@ function AddModalElement() {
 
     modalContent = document.createElement("div");
     modalContent.classList.add("modal-content", "card", "p-5");
+    modalContent.style = "display: grid;";
     modalDiv.appendChild(modalContent);
 
     let closeButton = document.createElement("button");
