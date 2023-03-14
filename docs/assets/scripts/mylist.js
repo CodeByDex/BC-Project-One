@@ -53,7 +53,7 @@ function LoadCards(movieEL, movies, type) {
 
 
 
-        newImg.setAttribute("alt", "Movie Image");
+        newImg.setAttribute("alt", mov.Title + " " + type + " Cover Photo");
         newImg.setAttribute("src", mov.ImageURL);
 
         newImg.addEventListener("click", clickImage)
