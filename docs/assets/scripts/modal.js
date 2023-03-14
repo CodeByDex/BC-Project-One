@@ -2,6 +2,13 @@
  * This is an extension of Bulma; Bulma must be included on the site to use this
  * Add this js file to any webpage to enable a modal dialog that you can call using the openModal method
  ***********************************************/
+function openModalWithImage(src, alt) {
+    let newImageEl = document.createElement("img");
+    newImageEl.setAttribute("src", src);
+    newImageEl.setAttribute("alt", alt);
+    openModal(newImageEl);
+} 
+
 window.addEventListener("load", () => {
     AddModalElement()
 });
