@@ -158,7 +158,7 @@ async function CreateResultCard(result) {
 
     let newImage = document.createElement("img");
     newImage.setAttribute("src", result.ImageURL)
-    newImage.setAttribute("alt", "Movie Title Alt");
+    newImage.setAttribute("alt", result.Title + " " + result.Type + " Cover Photo");
     newImage.addEventListener("click", clickImage)
 
     let newDivContent = document.createElement("div");
