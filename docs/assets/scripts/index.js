@@ -3,6 +3,7 @@ const booksCheck = document.querySelector("#Books");
 const moviesCheck = document.querySelector("#Movies");
 const searchInputEL = document.querySelector("#search-input");
 const searchButton = document.querySelector("#search-button");
+const backgroundImage = document.querySelector("#mainContent");
 
 window.addEventListener("load", () => {
     resultsEL.innerHTML = "";
@@ -20,6 +21,15 @@ window.addEventListener("load", () => {
             searchButton.style.backgroundColor = 'white'
         }
     })
+
+    booksCheck.addEventListener("click", () => {
+        backgroundImage.style.backgroundImage = "url('./assets/images/bookcase.jpg')";
+    })
+
+    moviesCheck.addEventListener("click", () => {
+        backgroundImage.style.backgroundImage = "url('./assets/images/movieTheater.jpg')";
+    }
+    )
 
     booksCheck.checked = true;
 });
@@ -202,4 +212,3 @@ async function CreateResultCard(result) {
     newCardFooter.appendChild(newAddListButton);
     resultsEL.appendChild(newDivTile);
 }
-
