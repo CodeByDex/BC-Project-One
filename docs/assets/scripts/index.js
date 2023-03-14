@@ -164,7 +164,7 @@ async function CreateResultCard(result) {
     newCardFooter.classList.add("card-footer");
 
     let newAddListButton = document.createElement("a");
-    newAddListButton.classList.add("add-favorite"); // Check class type
+    newAddListButton.classList.add("add-favorite");
     newAddListButton.classList.add("card-footer-item");
     newAddListButton.classList.add("button");
     newAddListButton.classList.add('is-dark')

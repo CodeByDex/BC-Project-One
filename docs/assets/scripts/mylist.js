@@ -56,6 +56,8 @@ function LoadCards(movieEL, movies, type) {
         newImg.setAttribute("alt", "Movie Image");
         newImg.setAttribute("src", mov.ImageURL);
 
+        newImg.addEventListener("click", clickImage)
+
         newTitle.textContent = mov.Title;
         newTitle.classList.add("title");
         newTitle.classList.add("3")
@@ -100,3 +102,9 @@ function RemoveItem(event) {
         LoadEmptyListMessage(listDiv, "You've finished all you items! Go to Search to add more!")
     }
 };
+
+function clickImage(event) {
+    let src = event.target.getAttribute("src");
+    let alt = event.target.getAttribute("alt");
+    openModalWithImage(src, alt);
+}
