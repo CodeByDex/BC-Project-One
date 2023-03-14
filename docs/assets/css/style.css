@@ -55,3 +55,9 @@ h2 {
 #search-button:active{
     background-color: lightblue;
 }
+
+.card-image img:hover, .box img:hover {
+    box-shadow: 20px 20px 10px grey;
+    transform: translate(-5px, -5px);
+    transition: transform ease 1s, box-shadow ease 1s;
+}
