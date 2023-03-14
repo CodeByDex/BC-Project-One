@@ -7,6 +7,8 @@ const searchButton = document.querySelector("#search-button");
 window.addEventListener("load", () => {
     resultsEL.innerHTML = "";
     searchButton.addEventListener("click", clickedSearch);
+    booksCheck.addEventListener("click", clearSearchResults);
+    moviesCheck.addEventListener("click", clearSearchResults);
     searchInputEL.addEventListener("keydown", (event) => {
         if (event.key === "Enter") {
             clickedSearch();
@@ -92,7 +94,7 @@ function SearchType() {
 function DisplayResults(results) {
 
     if (results.length != 0) {
-        resultsEL.innerHTML = "";
+        clearSearchResults();
 
         results.forEach(result => {
             if (result.Type != "Error") {
@@ -115,6 +117,10 @@ function DisplayResults(results) {
     searchButton.removeAttribute("disabled");
 
 };
+
+function clearSearchResults() {
+    resultsEL.innerHTML = "";
+}
 
 async function CreateResultCard(result) {
     let newDivTile = document.createElement("div");
