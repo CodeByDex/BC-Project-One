@@ -2,6 +2,14 @@
  * This is an extension of Bulma; Bulma must be included on the site to use this
  * Add this js file to any webpage to enable a modal dialog that you can call using the openModal method
  ***********************************************/
+function openModalWithImage(src, alt) {
+    let newImageEl = document.createElement("img");
+    newImageEl.setAttribute("src", src);
+    newImageEl.setAttribute("alt", alt);
+    newImageEl.style = "justify-self: center;";
+    openModal(newImageEl);
+} 
+
 window.addEventListener("load", () => {
     AddModalElement()
 });
@@ -22,6 +30,7 @@ function AddModalElement() {
 
     modalContent = document.createElement("div");
     modalContent.classList.add("modal-content", "card", "p-5");
+    modalContent.style = "display: grid;";
     modalDiv.appendChild(modalContent);
 
     let closeButton = document.createElement("button");

@@ -37,6 +37,12 @@ window.addEventListener("load", () => {
 /**********************************************
  * Event Handlers
  **********************************************/
+function clickImage(event) {
+    let src = event.target.getAttribute("src");
+    let alt = event.target.getAttribute("alt");
+    openModalWithImage(src, alt);
+}
+
 
 function clickedSearch() {
     let searchValue = searchInputEL.value;
@@ -152,7 +158,8 @@ async function CreateResultCard(result) {
 
     let newImage = document.createElement("img");
     newImage.setAttribute("src", result.ImageURL)
-    newImage.setAttribute("alt", "Movie Title Alt")
+    newImage.setAttribute("alt", "Movie Title Alt");
+    newImage.addEventListener("click", clickImage)
 
     let newDivContent = document.createElement("div");
     newDivContent.classList.add("card-content")
@@ -173,7 +180,7 @@ async function CreateResultCard(result) {
     newCardFooter.classList.add("card-footer");
 
     let newAddListButton = document.createElement("a");
-    newAddListButton.classList.add("add-favorite"); // Check class type
+    newAddListButton.classList.add("add-favorite");
     newAddListButton.classList.add("card-footer-item");
     newAddListButton.classList.add("button");
     newAddListButton.classList.add('is-dark')
