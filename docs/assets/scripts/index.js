@@ -8,7 +8,7 @@ window.addEventListener("load", () => {
     resultsEL.innerHTML = "";
     searchButton.addEventListener("click", clickedSearch);
     booksCheck.addEventListener("click", clearSearchResults);
-    moviesCheck.addEventListener("click", clearSearchResults)
+    moviesCheck.addEventListener("click", clearSearchResults);
     searchInputEL.addEventListener("keydown", (event) => {
         if (event.key === "Enter") {
             clickedSearch();
